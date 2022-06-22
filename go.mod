@@ -1,10 +1,9 @@
-module go-zero-demo
+module github.com/congim/logger
 
 go 1.17
 
 require (
 	github.com/BurntSushi/toml v1.1.0
-	github.com/congim/logger v0.2.5
 	github.com/getsentry/sentry-go v0.13.0
 	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
 	go.uber.org/zap v1.21.0
@@ -13,6 +12,7 @@ require (
 )
 
 require (
+	github.com/jonboulle/clockwork v0.3.0 // indirect
 	github.com/lestrrat-go/strftime v1.0.6 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	go.uber.org/atomic v1.7.0 // indirect
