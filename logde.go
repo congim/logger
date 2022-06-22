@@ -3,6 +3,11 @@ package logger
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"io/ioutil"
+	"os"
+	"time"
+
 	"github.com/BurntSushi/toml"
 	"github.com/getsentry/sentry-go"
 	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
@@ -10,10 +15,6 @@ import (
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"gopkg.in/yaml.v2"
-	"io"
-	"io/ioutil"
-	"os"
-	"time"
 )
 
 const (
@@ -273,7 +274,7 @@ func (c *LogOptions) sizeDivisionWriter(filename string) io.Writer {
 
 func (c *LogOptions) timeDivisionWriter(filename string) io.Writer {
 	hook, err := rotatelogs.New(
-		filename+c.TimeUnit.Format(),
+		filename+c.TimeUnit.Format()+".log",
 		rotatelogs.WithMaxAge(time.Duration(int64(24*time.Hour)*int64(c.MaxAge))),
 		rotatelogs.WithRotationTime(c.TimeUnit.RotationGap()),
 	)
